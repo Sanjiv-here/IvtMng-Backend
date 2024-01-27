@@ -30,6 +30,7 @@ const adminSchema=mongoose.Schema({
     required:true,
     minLength:8,
     validate:async function(){
+      return this.adminPassword==this.adminConfirmPassword
     }
   },
   adminDesignation:{

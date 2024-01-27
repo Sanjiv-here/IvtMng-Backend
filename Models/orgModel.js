@@ -37,6 +37,9 @@ const orgSchema=mongoose.Schema({
         type:String,
         required:true,
         minLength:8,
+        validate:async function(){
+          return this.orgPassword==this.orgConfirmPassword
+        }
     }
   })
 
