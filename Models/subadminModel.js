@@ -5,12 +5,12 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Schema = mongoose.Schema
 
-const adminSchema=mongoose.Schema({
-  adminUsername:{
+const subadminSchema=mongoose.Schema({
+    subadminUsername:{
     type:String,
     required:true
   },
-  adminEmail:{
+  subadminEmail:{
     type:String,
     required:[true,"Please provide a email"],
     unique:true,
@@ -19,38 +19,38 @@ const adminSchema=mongoose.Schema({
         message: 'Invalid email format',
     },
   },
-  adminPassword:{
+  subadminPassword:{
     type:String,
     required:[true,"Please provide a password"],
     select:false,
     minLength:8
   },
-  adminConfirmPassword:{
+  subadminConfirmPassword:{
     type:String,
     required:true,
     minLength:8,
     validate:async function(){
-      return this.adminPassword==this.adminConfirmPassword
+      return this.subadminPassword==this.subadminConfirmPassword
     }
   },
-  adminDesignation:{
+  subadminDesignation:{
     type:String,
     required:true
   },
-  adminCryptoAddress:{
+  subadminCryptoAddress:{
     type:String,
     required:true
   },
-  adminContractAddress:{
+  subadminContractAddress:{
     type:String,
     required:true
   },
-  adminContact:{
+  subadminContact:{
     type:String,
     required:true
   },      
 })
 
-const Admin=mongoose.model('Admin',adminSchema);
+const SubAdmin=mongoose.model('SubAdmin',subadminSchema);
 
-module.exports=Admin;
+module.exports=SubAdmin;
